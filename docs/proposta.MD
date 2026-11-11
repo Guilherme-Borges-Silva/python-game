@@ -125,47 +125,45 @@ Liste até três funcionalidades extras para implementar somente depois que a ve
 
 Seção complementar, com os itens pedidos no enunciado para a Entrega 1 (estruturas de dados, organização do código e uso de arquivos).
 
-- **Cobra:** lista de tuplas `(coluna, linha)`, onde o primeiro elemento é a cabeça.
-- **Direção:** tupla `(dx, dy)`, por exemplo `(1, 0)` para a direita.
-- **Dados na tela:** lista de dicionários, por exemplo `{"categoria": "A", "posicao": (5, 7)}`.
-- **Contagem do dataset:** dicionário `{"A": 0, "B": 0, "C": 0}`.
+- **Cobra:** lista de tuplas *(coluna, linha)*, onde o primeiro elemento é a cabeça.
+- **Direção:** tupla *(dx, dy)*, por exemplo *(1, 0)* para a direita.
+- **Dados na tela:** lista de dicionários, por exemplo *{"categoria": "A", "posicao": (5, 7)}*.
+- **Contagem do dataset:** dicionário *{"A": 0, "B": 0, "C": 0}*.
 - **Cores e configurações:** dicionário de cores por categoria e constantes (tamanho da grade, velocidade, limite de viés, meta por categoria).
 
 Funções previstas (lógica separada do desenho, para facilitar os testes):
 
-- `mover_cobra(cobra, direcao, cresceu)`: retorna a nova lista de segmentos.
-- `colidiu_borda(cabeca, colunas, linhas)` e `colidiu_corpo(cobra)`: retornam `True` ou `False`.
-- `gerar_posicao_livre(cobra, dados, colunas, linhas)`: sorteia uma posição não ocupada.
-- `calcular_vies(contagem)`: retorna `max - min` das contagens.
-- `esta_balanceado(contagem)`: `True` se o viés for no máximo 1.
-- `calcular_pontos(contagem)`: retorna 20 se balanceado, senão 10.
-- `verificar_vitoria(contagem, meta)` e `verificar_derrota_vies(contagem, limite)`.
-- `ler_recorde(caminho)` e `salvar_recorde(caminho, pontos)`.
-- Funções de desenho (`desenhar_grade`, `desenhar_cobra`, `desenhar_dados`, `desenhar_painel`) e o loop principal em `main()`.
+- *mover_cobra(cobra, direcao, cresceu)*: retorna a nova lista de segmentos.
+- *colidiu_borda(cabeca, colunas, linhas)* e *colidiu_corpo(cobra)*: retornam *True* ou *False*.
+- *gerar_posicao_livre(cobra, dados, colunas, linhas)*: sorteia uma posição não ocupada.
+- *calcular_vies(contagem)*: retorna *max - min* das contagens.
+- *esta_balanceado(contagem)*: *True* se o viés for no máximo 1.
+- *calcular_pontos(contagem)*: retorna 20 se balanceado, senão 10.
+- *verificar_vitoria(contagem, meta)* e *verificar_derrota_vies(contagem, limite)*.
+- *ler_recorde(caminho)* e *salvar_recorde(caminho, pontos)*.
+- Funções de desenho (*desenhar_grade*, *desenhar_cobra*, *desenhar_dados*, *desenhar_painel*) e o loop principal em *main()*.
 
 ## 16. Uso de arquivos
 
-- `recorde.txt`: guarda a maior pontuação; lido ao iniciar e atualizado no fim da partida se o recorde for batido. Se o arquivo não existir, o recorde começa em 0.
+- *recorde.txt*: guarda a maior pontuação; lido ao iniciar e atualizado no fim da partida se o recorde for batido. Se o arquivo não existir, o recorde começa em 0.
 
 ## 17. Testes planejados
 
-Testes simples (com `assert` ou `pytest`, conforme o template) para as funções de lógica:
+Testes simples (com *assert* ou *pytest*, conforme o template) para as funções de lógica:
 
-- `calcular_vies({"A": 3, "B": 1, "C": 2})` deve retornar `2`.
-- `esta_balanceado({"A": 2, "B": 2, "C": 1})` deve retornar `True`; com `{"A": 4, "B": 1, "C": 2}`, `False`.
-- `calcular_pontos` deve retornar 20 com o dataset balanceado e 10 caso contrário.
-- `colidiu_borda` deve retornar `True` para posições fora da grade e `False` dentro dela.
-- `colidiu_corpo` deve detectar quando a cabeça ocupa a mesma posição de outro segmento.
-- `mover_cobra` deve manter o tamanho quando não cresce e aumentar 1 quando cresce.
-- `verificar_vitoria` deve retornar `True` apenas quando todas as categorias atingem a meta.
-- `ler_recorde` deve retornar 0 quando o arquivo não existe.
+- *calcular_vies({"A": 3, "B": 1, "C": 2})* deve retornar *2*.
+- *esta_balanceado({"A": 2, "B": 2, "C": 1})* deve retornar *True*; com *{"A": 4, "B": 1, "C": 2}*, *False*.
+- *calcular_pontos* deve retornar 20 com o dataset balanceado e 10 caso contrário.
+- *colidiu_borda* deve retornar *True* para posições fora da grade e *False* dentro dela.
+- *colidiu_corpo* deve detectar quando a cabeça ocupa a mesma posição de outro segmento.
+- *mover_cobra* deve manter o tamanho quando não cresce e aumentar 1 quando cresce.
+- *verificar_vitoria* deve retornar *True* apenas quando todas as categorias atingem a meta.
+- *ler_recorde* deve retornar 0 quando o arquivo não existe.
 
 ## 18. Recursos externos
 
-Por enquanto, o jogo usará apenas formas geométricas e fontes padrão do Pygame. Qualquer imagem, som, fonte ou trecho de código externo usado será identificado no `README.md`, com origem e licença quando possível. O uso de ferramentas de IA como apoio no desenvolvimento também será informado no `README.md`.
+Por enquanto, o jogo usará apenas formas geométricas e fontes padrão do Pygame. Qualquer imagem, som, fonte ou trecho de código externo usado será identificado no *README.md*, com origem e licença quando possível. O uso de ferramentas de IA como apoio no desenvolvimento também será informado no *README.md*.
 
 ## 19. Declaração de originalidade
 
-Declaro que esta proposta é original e foi elaborada para este trabalho. A mecânica clássica do Snake é usada como base, mas a regra de equilíbrio entre categorias de dados, o cálculo de viés, o multiplicador por balanceamento e as condições de vitória e derrota ligadas ao viés são criação própria, alinhadas ao tema "IA no Cotidiano e Uso Responsável".
-
-— Guilherme Borges Silva
+Declaro que esta proposta é original e foi elaborada para este trabalho. A mecânica clássica do Snake é usada como base, mas a regra de equilíbrio entre categorias de dados, o cálculo de viés, o multiplicador por balanceamento e as condições de vitória e derrota ligadas ao viés são criação própria, alinhadas ao tema "IA no Cotidiano e Uso Responsável". - Guilherme Borges Silva

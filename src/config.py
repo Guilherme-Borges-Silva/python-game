@@ -1,13 +1,44 @@
-# Configurações centrais do jogo (tela, cores e caminhos de arquivos).
-LARGURA_TELA = 800
-ALTURA_TELA = 600
+# Configurações do jogo
+
+# Grade
+TAMANHO_CELULA = 30
+COLUNAS = 20
+LINHAS = 20
+LARGURA_AREA_JOGO = COLUNAS * TAMANHO_CELULA
+LARGURA_PAINEL = 220
+LARGURA_TELA = LARGURA_AREA_JOGO + LARGURA_PAINEL
+ALTURA_TELA = LINHAS * TAMANHO_CELULA
+
 FPS = 60
+INTERVALO_MOVIMENTO_MS = 130  # tempo entre um passo e outro da cobra
 
-TITULO_JOGO = "Projeto Final - Pygame"
+TITULO_JOGO = "DataSnake: Treinando sem Viés"
 
+# Regras do dataset
+CATEGORIAS = ["A", "B", "C"]
+META_POR_CATEGORIA = 10
+LIMITE_VIES = 5
+TOLERANCIA_BALANCEADO = 1
+PONTOS_BASE = 10
+PONTOS_BALANCEADO = 20
+
+# Cores
 BRANCO = (255, 255, 255)
-PRETO = (0, 0, 0)
-CINZA = (212,212,212)
+CINZA = (180, 180, 180)
+FUNDO_JOGO = (25, 28, 36)
+LINHA_GRADE = (38, 42, 52)
+FUNDO_PAINEL = (15, 17, 22)
+COR_COBRA = (90, 200, 120)
+VERDE = (90, 200, 120)
+AMARELO = (240, 200, 70)
+VERMELHO = (230, 80, 80)
 
+CORES_CATEGORIAS = {
+    "A": (230, 90, 90),
+    "B": (80, 160, 230),
+    "C": (240, 190, 60),
+}
+
+# Arquivos
 CAMINHO_RECORDE = "data/recorde.txt"
 CAMINHO_SPRITES = "assets/imagens/spritesheet.bmp"

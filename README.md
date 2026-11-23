@@ -1,68 +1,51 @@
-# Nome do Jogo
+# DataSnake: Treinando sem Viés
 
-Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
+Projeto final da disciplina de Introdução a Algoritmos, desenvolvido com Python e Pygame.
 
-Este repositório é um template para os grupos da disciplina. A proposta é começar com uma base funcional e evoluir o jogo ao longo do semestre.
+Tema: **IA no Cotidiano e Uso Responsável**, com o recorte **vieses e justiça nas decisões** (efeito de dados desequilibrados no treinamento de sistemas de IA).
 
 ## Integrantes do grupo
 
-- Nome do integrante 1
-- Nome do integrante 2
-- Nome do integrante 3
-- Nome do integrante 4
+- Guilherme Borges Silva
 
 ## Estrutura do projeto
 
 - `main.py`: ponto de entrada da aplicação.
-- `src/`: código-fonte principal do jogo (loop, regras, sprites e dados).
+- `src/`: código-fonte principal do jogo.
+  - `jogo.py`: loop principal, eventos, atualização do estado e desenho.
+  - `config.py`: constantes (grade, cores, regras e caminhos).
+  - `funcoes.py`: funções puras de regra (viés, pontuação, movimento, colisões).
+  - `dados.py`: leitura e gravação do recorde.
 - `assets/`: imagens, fontes e sons.
-- `data/`: arquivos persistentes (recorde/ranking).
+- `data/`: arquivos persistentes (`recorde.txt`).
 - `tests/`: testes unitários com `pytest`.
-- `docs/`: documentação do projeto, incluindo proposta inicial.
+- `docs/`: documentação do projeto, incluindo a proposta inicial.
 
 ## Descrição do jogo
 
-Descreva brevemente a ideia principal do jogo.
-
-Exemplo:
-
-> O jogo consiste em controlar um personagem que deve coletar moedas e evitar obstáculos. O jogador ganha pontos ao coletar itens e perde vidas ao colidir com obstáculos. A partida termina quando o tempo acaba ou quando o jogador perde todas as vidas.
+O jogador controla uma cobra que representa um **modelo de IA em treinamento**. Na grade sempre existem três dados, um de cada categoria (A, B e C, identificados por cor). Ao comer um dado, a cobra cresce, ganha pontos e a contagem daquela categoria no dataset aumenta. Um painel lateral mostra a contagem de cada categoria e uma **barra de viés**. Pegar sempre o dado mais próximo deixa o dataset desequilibrado e o modelo enviesado; por isso o jogador precisa planejar a rota para coletar as três categorias de forma equilibrada.
 
 ## Objetivo do jogador
 
-Explique o que o jogador precisa fazer para vencer ou avançar no jogo.
-
-Exemplo:
-
-> O objetivo é coletar a maior quantidade possível de itens antes que o tempo acabe, evitando colisões com os obstáculos.
+Treinar o modelo de forma justa: coletar 10 dados de cada categoria (30 no total) sem deixar o viés chegar ao limite e sem bater a cobra, fazendo a maior pontuação possível.
 
 ## Regras do jogo
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador se movimenta usando as setas do teclado.
-- Cada item coletado aumenta a pontuação.
-- Colidir com um obstáculo reduz a quantidade de vidas.
-- A partida termina quando o jogador perde todas as vidas ou quando o tempo acaba.
+- A cobra anda sozinha; as setas mudam a direção (não é possível inverter o sentido de uma vez).
+- Cada dado coletado faz a cobra crescer e soma pontos; um novo dado da mesma categoria aparece em outro lugar.
+- O viés é a diferença entre a categoria com mais dados e a com menos. Com viés de no máximo 1 (dataset balanceado), o dado vale 20 pontos; caso contrário, vale 10.
+- Se o viés chegar a 5, o modelo fica enviesado e a partida termina em derrota.
+- Bater na borda ou no próprio corpo encerra a partida.
+- Coletar 10 dados de cada categoria é a vitória. O recorde é salvo em `data/recorde.txt`.
 
 ## Controles
 
-Informe as teclas ou comandos utilizados no jogo.
-
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
+- Setas: mudar a direção da cobra
+- ENTER: iniciar / jogar de novo
+- P: pausar / continuar
 - ESC: sair do jogo
 
 ## Como executar o projeto
-
-### 1. Clonar o repositório
 
 ```bash
 git clone LINK_DO_REPOSITORIO
@@ -77,15 +60,21 @@ python main.py
 python -m pytest
 ```
 
-## Checklist mínimo para entrega
+## Situação atual (Entrega 2 – versão parcial)
 
-- Preencher este README com nome final, descrição real, regras e controles do jogo.
-- Atualizar `docs/proposta.MD` com a proposta do grupo.
-- Garantir que o jogo executa com `python main.py`.
-- Garantir que os testes passam com `pytest`.
+Já implementado:
 
-## Observações para os alunos
+- Janela do Pygame, loop principal e tela inicial.
+- Movimento da cobra em grade com as setas, pausa e reinício.
+- Três dados (A, B, C) na tela, crescimento e geração em posição livre.
+- Contagem do dataset, cálculo do viés, barra de viés e multiplicador de pontos.
+- Derrota por viés e por colisão, vitória ao completar a meta.
+- Recorde salvo e lido em arquivo.
+- Testes das funções de lógica em `tests/test_logica.py`.
 
-- Mantenham o código organizado em módulos pequenos e com responsabilidade clara.
-- Comentem partes importantes da lógica, principalmente regras do jogo.
-- Registrem decisões técnicas no README do grupo ao longo do desenvolvimento.
+Próximos passos (se houver tempo): dado ruidoso, ranking dos 5 melhores, fases com velocidade crescente e sons.
+
+## Recursos externos
+
+- Gráficos feitos apenas com formas do Pygame e a fonte padrão do Pygame.
+- Ferramentas de IA (Claude) foram usadas como apoio na elaboração da proposta e do código; o código foi revisado e adaptado pelo autor.

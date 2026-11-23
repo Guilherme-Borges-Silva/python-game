@@ -48,7 +48,7 @@ Treinar o modelo de forma justa: coletar 10 dados de cada categoria (30 no total
 ## Como executar o projeto
 
 ```bash
-git clone LINK_DO_REPOSITORIO
+git clone https://github.com/Guilherme-Borges-Silva/python-game.git
 cd NOME_DA_PASTA
 pip install -r requirements.txt
 python main.py
